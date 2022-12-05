@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="VCp-EJ-cB4">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="VPx-DQ-S7f">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VCp-EJ-cB4" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GDd-AO-yz7">
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="LIh-IW-htg" kind="relationship" relationship="rootViewController" id="6v3-jd-kfS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y7d-FH-xAg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="268" y="792.95352323838085"/>
+        </scene>
+        <!--GitHub Search-->
+        <scene sceneID="0SE-T7-J5F">
+            <objects>
+                <viewController storyboardIdentifier="SearchRepoVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LIh-IW-htg" customClass="SearchRepoVC" customModule="GitHubSearch" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RDI-mL-msv"/>
+                        <viewControllerLayoutGuide type="bottom" id="DSP-v1-LSA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oCj-eN-qXG">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="RLX-Eb-qYg">
+                                <rect key="frame" x="0.0" y="91" width="390" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="LIh-IW-htg" id="gZe-OU-uQ4"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FPp-Tv-xaa">
+                                <rect key="frame" x="0.0" y="147" width="390" height="663"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="LIh-IW-htg" id="IW7-uD-gPo"/>
+                                    <outlet property="delegate" destination="LIh-IW-htg" id="P8e-BL-qbU"/>
+                                </connections>
+                            </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xiV-Pf-lcw">
+                                <rect key="frame" x="185" y="169" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="FPp-Tv-xaa" secondAttribute="trailing" id="Ble-z7-6fK"/>
+                            <constraint firstItem="xiV-Pf-lcw" firstAttribute="centerX" secondItem="oCj-eN-qXG" secondAttribute="centerX" id="MOi-3m-R28"/>
+                            <constraint firstItem="xiV-Pf-lcw" firstAttribute="top" secondItem="RLX-Eb-qYg" secondAttribute="bottom" constant="22" id="Pzc-mQ-J5C"/>
+                            <constraint firstItem="RLX-Eb-qYg" firstAttribute="top" secondItem="RDI-mL-msv" secondAttribute="bottom" id="QL5-0f-EEj"/>
+                            <constraint firstAttribute="trailing" secondItem="RLX-Eb-qYg" secondAttribute="trailing" id="XWR-La-pPF"/>
+                            <constraint firstItem="RLX-Eb-qYg" firstAttribute="leading" secondItem="oCj-eN-qXG" secondAttribute="leading" id="XvJ-21-X0U"/>
+                            <constraint firstItem="FPp-Tv-xaa" firstAttribute="leading" secondItem="oCj-eN-qXG" secondAttribute="leading" id="YEN-Q6-8zh"/>
+                            <constraint firstItem="DSP-v1-LSA" firstAttribute="top" secondItem="FPp-Tv-xaa" secondAttribute="bottom" id="mfV-KD-exn"/>
+                            <constraint firstItem="FPp-Tv-xaa" firstAttribute="top" secondItem="RLX-Eb-qYg" secondAttribute="bottom" id="ph3-ll-opJ"/>
+                            <constraint firstItem="FPp-Tv-xaa" firstAttribute="top" secondItem="RLX-Eb-qYg" secondAttribute="bottom" id="qiP-vZ-tbi"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="GitHub Search" id="s7K-XH-SBP"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="xiV-Pf-lcw" id="zfk-dS-nBk"/>
+                        <outlet property="repoTableView" destination="FPp-Tv-xaa" id="Zfj-rS-wdD"/>
+                        <outlet property="searchBar" destination="RLX-Eb-qYg" id="7Yz-TH-rnb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lCX-ce-jmp" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="999.20000000000005" y="792.95352323838085"/>
+        </scene>
+        <!--Repo PageVC-->
+        <scene sceneID="u5X-Wt-APb">
+            <objects>
+                <viewController storyboardIdentifier="RepoPageVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0W6-f8-5MF" customClass="RepoPageVC" customModule="GitHubSearch" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="q2U-vc-nDS"/>
+                        <viewControllerLayoutGuide type="bottom" id="wOj-I3-1DE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="u5M-it-h3Q">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vjV-z1-RQh">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="810"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="0W6-f8-5MF" id="Ayi-7W-oAL"/>
+                                </connections>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="pbd-Pa-ezW">
+                                <rect key="frame" x="185" y="412" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wOj-I3-1DE" firstAttribute="top" secondItem="vjV-z1-RQh" secondAttribute="bottom" id="8Ul-vQ-vL8"/>
+                            <constraint firstItem="vjV-z1-RQh" firstAttribute="top" secondItem="u5M-it-h3Q" secondAttribute="top" id="94h-cB-BTK"/>
+                            <constraint firstAttribute="trailing" secondItem="vjV-z1-RQh" secondAttribute="trailing" id="Jxa-Ma-kYk"/>
+                            <constraint firstItem="pbd-Pa-ezW" firstAttribute="centerY" secondItem="u5M-it-h3Q" secondAttribute="centerY" id="LMJ-hh-CZw"/>
+                            <constraint firstItem="pbd-Pa-ezW" firstAttribute="centerX" secondItem="u5M-it-h3Q" secondAttribute="centerX" id="nt7-hf-5H0"/>
+                            <constraint firstItem="vjV-z1-RQh" firstAttribute="leading" secondItem="u5M-it-h3Q" secondAttribute="leading" id="yrB-MM-7tv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="pbd-Pa-ezW" id="YVH-lI-Ua6"/>
+                        <outlet property="repoPageWebView" destination="vjV-z1-RQh" id="iKx-UU-Cyi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="367-CW-bsS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1768.8" y="792.95352323838085"/>
+        </scene>
+    </scenes>
+</document>
